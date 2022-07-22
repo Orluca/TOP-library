@@ -1,6 +1,11 @@
 /* ########################################################
 ######################### GLOBALS #########################
 ########################################################### */
+
+:root {
+  --color-test: rgb(233, 30, 30);
+}
+
 *,
 *::after,
 *::before {
@@ -15,6 +20,7 @@
 
 .add-book-container {
   display: flex;
+  background-color: #fff;
 }
 
 .input-container {
@@ -28,10 +34,11 @@
 
 .book-list-container {
   display: flex;
+  flex-direction: column;
   background-color: rgb(220, 220, 220);
 }
 
-.book-item-container {
+/* .book-item-container {
   display: flex;
   flex-direction: column;
   background-color: bisque;
@@ -41,8 +48,22 @@
 .book-property-container {
   display: flex;
   justify-content: space-between;
-}
+} */
 
 /* ############################################################
 #################### BOOK LIST / LIST VIEW ####################
 ############################################################ */
+
+.list-view-headers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.book-item-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.book-property-container > .label {
+  display: none;
+}
