@@ -10,6 +10,7 @@ let myLibrary = [];
 // ###############################################################
 const $btnAddBook = document.querySelector(".add-book-button");
 const $containerAddBook = document.querySelector(".add-book-container");
+const $containerBookList = document.querySelector(".book-items-container");
 
 // ###############################################################
 // ########################### CLASSES ###########################
@@ -60,11 +61,11 @@ function displayBooks(libraryArray) {
   const bookContainer = document.querySelector(".book-items-container");
   bookContainer.innerHTML = "";
 
-  libraryArray.forEach((book) => {
+  libraryArray.forEach((book, i) => {
     bookContainer.insertAdjacentHTML(
       "beforeend",
       `
-    <div class="book-item-container">
+    <div class="book-item-container" data-id="${i}">
         <div class="book-property-container">
           <div class="label">Title:</div>
           <div class="title-value">${book.title}</div>
@@ -79,12 +80,17 @@ function displayBooks(libraryArray) {
         </div>
         <div class="book-property-container">
           <div class="label">Read:</div>
-          <input type="checkbox" name="" id="" ${book.isRead ? "checked" : ""}/>
+          <input type="checkbox" id="read-checkbox" ${book.isRead ? "checked" : ""}/>
         </div>
       </div>
     `
     );
   });
+}
+
+function updateReadStatus(id, status) {
+  myLibrary[id].isRead = status;
+  saveToLocalStorage();
 }
 
 function init() {
@@ -99,9 +105,23 @@ function init() {
 // ###############################################################
 
 $btnAddBook.addEventListener("click", addBookToLibrary);
+
 $containerAddBook.addEventListener("keypress", function (e) {
   if (e.key !== "Enter") return;
   addBookToLibrary();
 });
+
+$containerBookList.addEventListener("click", function (e) {
+  if (e.target.id !== "read-checkbox") return;
+
+  const id = e.target.closest(".book-item-container").dataset.id;
+  const status = e.target.checked;
+
+  updateReadStatus(id, status);
+});
+
+// ###############################################################
+// ########################## START APP ##########################
+// ###############################################################
 
 init();
