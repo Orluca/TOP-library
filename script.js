@@ -51,17 +51,17 @@ function addBookToLibrary() {
   isRead.checked = false;
 
   // Update display to show the newly added book on the GUI
-  displayBooks(myLibrary);
+  displayBooks();
 
   // Save the current myLibrary array in localStorage
   saveToLocalStorage();
 }
 
-function displayBooks(libraryArray) {
+function displayBooks() {
   const bookContainer = document.querySelector(".book-items-container");
   bookContainer.innerHTML = "";
 
-  libraryArray.forEach((book, i) => {
+  myLibrary.forEach((book, i) => {
     bookContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -82,6 +82,7 @@ function displayBooks(libraryArray) {
           <div class="label">Read:</div>
           <input type="checkbox" id="read-checkbox" ${book.isRead ? "checked" : ""}/>
         </div>
+        <button id="delete-btn">Delete</button>
       </div>
     `
     );
@@ -91,6 +92,12 @@ function displayBooks(libraryArray) {
 function updateReadStatus(id, status) {
   myLibrary[id].isRead = status;
   saveToLocalStorage();
+}
+
+function deleteEntry(id) {
+  myLibrary.splice(id, 1);
+  saveToLocalStorage();
+  displayBooks();
 }
 
 function init() {
@@ -112,12 +119,16 @@ $containerAddBook.addEventListener("keypress", function (e) {
 });
 
 $containerBookList.addEventListener("click", function (e) {
-  if (e.target.id !== "read-checkbox") return;
-
   const id = e.target.closest(".book-item-container").dataset.id;
-  const status = e.target.checked;
+  if (e.target.id === "read-checkbox") {
+    const status = e.target.checked;
+    updateReadStatus(id, status);
+  }
 
-  updateReadStatus(id, status);
+  if (e.target.id === "delete-btn") {
+    // console.log("delte");
+    deleteEntry(id);
+  }
 });
 
 // ###############################################################
