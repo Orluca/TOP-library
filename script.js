@@ -9,9 +9,16 @@ let currentlySortedBy;
 // ###############################################################
 // #################### HTML ELEMENT SELECTORS ###################
 // ###############################################################
+const $appContainer = document.querySelector(".app-container");
 const $btnAddBook = document.querySelector(".add-book-button");
 const $containerAddBook = document.querySelector(".add-book-container");
 const $containerBookList = document.querySelector(".book-items-container");
+
+const $modalWindow = document.querySelector(".edit-modal-window");
+const $modalTitle = document.querySelector(".modal-input-title");
+const $modalAuthor = document.querySelector(".modal-input-author");
+const $modalYear = document.querySelector(".modal-input-year");
+const $modalReadStatus = document.querySelector(".modal-input-read-status");
 
 // ###############################################################
 // ########################### CLASSES ###########################
@@ -71,13 +78,13 @@ function displayBooks() {
       <div class="author-value">${book.author}</div>
       <div class="year-value">${book.year}</div>
       <label class="toggler-wrapper">
-        <input type="checkbox" id="read-checkbox" ${book.isRead ? "checked" : ""}>
+        <input type="checkbox" class="read-status-value" id="read-checkbox" ${book.isRead ? "checked" : ""}>
         <div class="toggler-slider">
           <div class="toggler-knob"></div>
         </div>
       </label>
-      <button id="edit-btn">Edit</button>
-      <button id="delete-btn">Delete</button>
+      <img id="edit-btn" src="assets/edit.png">
+      <img id="delete-btn" src="assets/delete.png">
     </div>
     `
     );
@@ -94,6 +101,24 @@ function deleteEntry(id) {
   myLibrary.splice(id, 1);
   saveToLocalStorage();
   displayBooks();
+}
+
+function editEntry(id, element) {
+  const itemContainer = element.closest(".book-item-container");
+  const titleElement = itemContainer.querySelector(".title-value");
+  const authorElement = itemContainer.querySelector(".author-value");
+  const yearElement = itemContainer.querySelector(".year-value");
+  const readStatusElement = itemContainer.querySelector(".read-status-value");
+
+  $modalBackground.classList.remove("hidden");
+  $appContainer.classList.add("blurry");
+
+  $modalWindow.dataset.id = id;
+
+  $modalTitle.value = titleElement.textContent;
+  $modalAuthor.value = authorElement.textContent;
+  $modalYear.value = yearElement.textContent;
+  $modalReadStatus.checked = readStatusElement.checked;
 }
 
 function init() {
@@ -125,6 +150,9 @@ $containerBookList.addEventListener("click", function (e) {
 
   // Listen for "Delete" button presses
   if (e.target.id === "delete-btn") deleteEntry(id);
+
+  // Listen for "Delete" button presses
+  if (e.target.id === "edit-btn") editEntry(id, e.target);
 });
 
 // ###############################################################
@@ -133,7 +161,7 @@ $containerBookList.addEventListener("click", function (e) {
 
 init();
 
-// TEMP
+// SORTING STUFF
 
 const $titleHeader = document.querySelector(".title-header");
 const $authorHeader = document.querySelector(".author-header");
@@ -221,4 +249,34 @@ $readStatusHeader.addEventListener("click", function () {
     currentlySortedBy = "read-status-desc";
   }
   displayBooks();
+});
+
+// EDIT BUTTON
+const $modalBackground = document.querySelector(".edit-modal-background");
+
+function closeModal() {
+  $modalBackground.classList.add("hidden");
+  $appContainer.classList.remove("blurry");
+}
+
+$modalBackground.addEventListener("click", function (e) {
+  if (e.target !== this) return;
+  closeModal();
+});
+
+const $modalConfirmBtn = document.querySelector(".modal-confirm-btn");
+const $modalCancelBtn = document.querySelector(".modal-cancel-btn");
+
+$modalCancelBtn.addEventListener("click", closeModal);
+
+$modalConfirmBtn.addEventListener("click", function (e) {
+  const id = $modalWindow.dataset.id;
+  myLibrary[id].title = $modalTitle.value;
+  myLibrary[id].author = $modalAuthor.value;
+  myLibrary[id].year = $modalYear.value;
+  myLibrary[id].isRead = $modalYear.checked;
+
+  saveToLocalStorage();
+  displayBooks();
+  closeModal();
 });

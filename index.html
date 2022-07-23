@@ -11,7 +11,6 @@
   <body>
     <div class="app-container">
       <h1>MY BOOK LIBRARY</h1>
-
       <div class="add-book-container">
         <div class="input-container"><label for="title-input">Title</label><input id="title-input" type="text" /></div>
         <div class="input-container"><label for="author-input">Author</label><input id="author-input" type="text" /></div>
@@ -29,6 +28,34 @@
         <div class="book-items-container"></div>
       </div>
         </div>
+    </div>
+    <div class="edit-modal-background hidden">
+      <div class="edit-modal-window" data-id="0">
+        <div class="modal-input-container">
+          <div>Title: </div>
+          <input class="modal-input-title" type="text">
+        </div>
+        <div class="modal-input-container">
+          <div>Author: </div>
+          <input class="modal-input-author" type="text">
+        </div>
+        <div class="modal-input-container">
+          <div>Year: </div>
+          <input class="modal-input-year" type="text">
+        </div>
+        <div class="modal-input-container">
+          <div>Read: </div>
+          <label class="toggler-wrapper">
+            <input class="modal-input-read-status" type="checkbox" id="read-checkbox" ${book.isRead ? "checked" : ""}>
+            <div class="toggler-slider">
+              <div class="toggler-knob"></div>
+            </div>
+          </label>
+        </div>
+        <button class="modal-cancel-btn">Cancel</button>
+        <button class="modal-confirm-btn">Confirm</button>
+      </div>
+      
     </div>
   </body>
 </html>

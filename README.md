@@ -11,3 +11,5 @@ Library project from "The Odin Project"
 - [ ] Info hover button giving short explanation and feature overview
 - [ ] Add proper error message for adding new book
 - [ ] Confirmation window for DELETE buttons
+
+ICONS: Google, Pixel perfect from Flaticon
