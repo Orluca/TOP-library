@@ -9,23 +9,26 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>MY BOOK LIBRARY</h1>
-    <div class="add-book-container">
-      <div class="input-container"><label for="title-input">Title</label><input id="title-input" type="text" /></div>
-      <div class="input-container"><label for="author-input">Author</label><input id="author-input" type="text" /></div>
-      <div class="input-container"><label for="year-input">Year</label><input id="year-input" type="text" /></div>
-      <div class="input-container"><label for="read-status-input">Read Status</label><input id="read-status-input" type="checkbox" /></div>
-      <button class="add-book-button">Add</button>
-    </div>
-    <div class="book-list-container">
-      <div class="list-view-headers-container">
-        <h3>Title</h3>
-        <h3>Author</h3>
-        <h3>Year</h3>
-        <h3>Read</h3>
+    <div class="app-container">
+      <h1>MY BOOK LIBRARY</h1>
+
+      <div class="add-book-container">
+        <div class="input-container"><label for="title-input">Title</label><input id="title-input" type="text" /></div>
+        <div class="input-container"><label for="author-input">Author</label><input id="author-input" type="text" /></div>
+        <div class="input-container"><label for="year-input">Year</label><input id="year-input" type="text" /></div>
+        <div class="input-container"><label for="read-status-input">Read Status</label><input id="read-status-input" type="checkbox" /></div>
+        <button class="add-book-button">Add</button>
       </div>
-      <div class="book-items-container"></div>
+      <div class="book-list-container">
+        <div class="list-view-headers-container">
+          <h3 class="title-header">Title</h3>
+          <h3 class="author-header">Author</h3>
+          <h3 class="year-header">Year</h3>
+          <h3 class="read-status-header">Read</h3>
+        </div>
+        <div class="book-items-container"></div>
+      </div>
+        </div>
     </div>
-  </div>
   </body>
 </html>

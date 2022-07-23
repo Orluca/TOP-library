@@ -14,6 +14,17 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  margin: 2rem;
+  width: 70%;
+}
+
 /* ############################################################
 ######################### ADD NEW BOOK ########################
 ############################################################ */
@@ -35,20 +46,7 @@
 .book-list-container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(220, 220, 220);
 }
-
-/* .book-item-container {
-  display: flex;
-  flex-direction: column;
-  background-color: bisque;
-  width: 250px;
-}
-
-.book-property-container {
-  display: flex;
-  justify-content: space-between;
-} */
 
 /* ############################################################
 #################### BOOK LIST / LIST VIEW ####################
@@ -56,14 +54,86 @@
 
 .list-view-headers-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr 0.5fr 0.5fr 1fr 1fr;
+  border-bottom: 1px solid rgb(95, 95, 95);
+  background-color: rgb(224, 224, 224);
+  padding: 0.5rem 0;
+  text-transform: uppercase;
 }
 
+.book-items-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ############################################################
+########################## BOOK ITEM ##########################
+############################################################ */
 .book-item-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr 0.5fr 0.5fr 1fr 1fr;
+  border-bottom: 1px solid rgb(95, 95, 95);
+  padding: 0.5rem 0;
+  align-items: center;
 }
 
-.book-property-container > .label {
+#delete-btn {
+  background-color: rgb(255, 78, 78);
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+#delete-btn:hover {
+  background-color: rgb(201, 56, 56);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.toggler-wrapper {
+  display: block;
+  width: 45px;
+  height: 25px;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggler-wrapper input[type="checkbox"] {
   display: none;
+}
+
+.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
+  background-color: #44cc66;
+}
+
+.toggler-wrapper .toggler-slider {
+  background-color: rgb(228, 104, 104);
+  position: absolute;
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.toggler-wrapper .toggler-knob {
+  position: absolute;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.toggler-wrapper input[type="checkbox"]:checked + .toggler-slider .toggler-knob {
+  left: calc(100% - 19px - 3px);
+}
+
+.toggler-wrapper .toggler-knob {
+  width: calc(25px - 6px);
+  height: calc(25px - 6px);
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  background-color: #fff;
 }
