@@ -16,7 +16,7 @@ body {
 }
 
 body.dark-mode {
-  --color-text-1: rgb(255, 255, 255);
+  --color-text-1: rgb(226, 226, 226);
   --color-text-2: rgb(209, 209, 209);
   --color-background-1: rgb(29, 29, 29);
   --color-background-2: rgb(44, 44, 44);

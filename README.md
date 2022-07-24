@@ -13,5 +13,6 @@ Library project from "The Odin Project"
 - [x] Confirmation window for DELETE buttons
 - [x] Github button
 - [ ] save dark mode settings
+- [ ] refactor
 
 ICONS: Google, Pixel perfect, Dave Gandy from Flaticon

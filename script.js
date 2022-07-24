@@ -23,6 +23,7 @@ const defaultBooks = [
 // ####################### GLOBAL VARIABLES ######################
 // ###############################################################
 let myLibrary = [];
+let darkModeIsActive = false;
 let currentlySortedBy;
 
 // ###############################################################
@@ -56,6 +57,7 @@ class Book {
 // ###############################################################
 function saveToLocalStorage() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("darkModeIsActive", JSON.stringify(darkModeIsActive));
 }
 
 function addBookToLibrary() {
@@ -146,8 +148,12 @@ function editEntry(id, element) {
 
 function init() {
   const savedLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  darkModeIsActive = JSON.parse(localStorage.getItem("darkModeIsActive"));
 
-  if (savedLibrary.length === 0) {
+  if (darkModeIsActive) document.body.classList.add("dark-mode");
+  else document.body.classList.remove("dark-mode");
+
+  if (savedLibrary?.length === 0 || !savedLibrary) {
     myLibrary = defaultBooks;
   } else {
     myLibrary = savedLibrary;
@@ -345,8 +351,9 @@ const $btnDarkMode = document.querySelector(".dark-mode-btn");
 const $btnDeleteAll = document.querySelector(".delete-all-btn");
 
 $btnDarkMode.addEventListener("click", function () {
-  console.log("Lkjsdf");
   document.body.classList.toggle("dark-mode");
+  darkModeIsActive = darkModeIsActive ? false : true;
+  saveToLocalStorage();
 });
 
 $btnDeleteAll.addEventListener("click", function () {
