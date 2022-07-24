@@ -9,7 +9,7 @@ Library project from "The Odin Project"
 - [x] Edit existing books
 - [ ] Delete All button
 - [ ] Info hover button giving short explanation and feature overview
-- [ ] Add proper error message for adding new book
+- [x] Add proper error message for adding new book
 - [x] Confirmation window for DELETE buttons
 - [ ] Github button
 

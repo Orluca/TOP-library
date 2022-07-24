@@ -315,6 +315,52 @@ hr {
   cursor: pointer;
 }
 
+/* ############################################################
+########################### SETTINGS ##########################
+############################################################ */
+
+.settings-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  margin: 0.3rem;
+}
+.settings-button:hover {
+  cursor: pointer;
+}
+
+.settings-button > img {
+  width: 30px;
+  filter: invert(0.3);
+}
+
+.settings-button > img:hover {
+  filter: invert(0.4);
+}
+
+.settings-modal {
+  position: fixed;
+  top: 40px;
+  right: 5px;
+  width: 200px;
+  height: 400px;
+  background-color: #44cc66;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.read-statistics {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ############################################################
+######################### SECTIONNAME #########################
+############################################################ */
+
 .hidden {
   display: none;
 }

@@ -287,4 +287,15 @@ function getNumberOfReadBooks() {
   return myLibrary.reduce((acc, book) => (acc += book.isRead ? 1 : 0), 0);
 }
 
-console.log(getNumberOfReadBooks());
+const $settingsModal = document.querySelector(".settings-modal");
+const $btnSettings = document.querySelector(".settings-button");
+
+$btnSettings.addEventListener("click", function () {
+  $settingsModal.classList.toggle("hidden");
+});
+
+window.addEventListener("click", function (e) {
+  if (e.target.closest(".settings-modal")) return;
+  if (e.target.closest(".settings-button")) return;
+  $settingsModal.classList.add("hidden");
+});
