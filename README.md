@@ -15,7 +15,7 @@ Library project from "The Odin Project"
 - [ ] Info hover button giving short explanation and feature overview
 - [ ] refactor
 - [ ] make responsive
-- [ ] dark mode still pretty ugly
+- [x] dark mode still pretty ugly
 - [ ] nicer looking confirmation window?
 - [x] sticky title bar on scroll?
 

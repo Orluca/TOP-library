@@ -15,6 +15,7 @@ body {
   --color-checkbox-active: rgb(132, 238, 55);
   --color-checkbox-inactive: rgb(238, 81, 81);
   --color-nth-row: rgba(0, 0, 0, 0.08);
+  --color-edit-inputs: rgb(255, 255, 255);
 
   --book-list-columns: 3fr 1.25fr 0.5fr 70px 40px 40px;
 }
@@ -32,6 +33,7 @@ body.dark-mode {
   --color-checkbox-active: rgb(133, 192, 90);
   --color-checkbox-inactive: rgb(227, 97, 97);
   --color-nth-row: rgba(255, 255, 255, 0.02);
+  --color-edit-inputs: rgb(232, 232, 232);
 }
 
 *,
@@ -328,9 +330,11 @@ hr {
 
 .modal-input-container > input {
   font-size: 1.5rem;
-  padding: 0.2rem;
+  padding: 0.2rem 0.4rem;
   width: 100%;
-  background-color: #d8d8d8;
+  background-color: var(--color-edit-inputs);
+  border-radius: 5px;
+  border: 1px solid var(--color-text-1);
 }
 
 .modal-input-container .toggler-wrapper {
