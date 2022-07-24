@@ -38,8 +38,6 @@ h1 {
 ############################################################ */
 
 .add-book-container {
-  /* display: flex;
-  justify-content: center; */
   background-color: rgb(227, 227, 227);
   column-gap: 1rem;
 
@@ -95,6 +93,13 @@ hr {
   margin: 1.5rem 0;
   border-color: rgba(0, 0, 0, 0.182);
   border-radius: 5px;
+}
+
+.add-book-error {
+  color: red;
+  grid-column: 1 / 6;
+  justify-self: center;
+  margin-top: 1rem;
 }
 
 /* ############################################################

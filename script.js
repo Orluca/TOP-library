@@ -44,10 +44,11 @@ function addBookToLibrary() {
   const author = document.querySelector("#author-input");
   const year = document.querySelector("#year-input");
   const isRead = document.querySelector("#read-status-input");
+  const errorMsg = document.querySelector(".add-book-error");
 
   // Check if all inputs are filled out
   if (!title.value || !author.value || !year.value) {
-    console.log("Please fill out everything");
+    errorMsg.classList.remove("hidden");
     return;
   }
 
@@ -57,6 +58,9 @@ function addBookToLibrary() {
   // Reset inputs
   title.value = author.value = year.value = "";
   isRead.checked = false;
+
+  // Hide the error message if it is currently shown
+  errorMsg.classList.add("hidden");
 
   // Update display to show the newly added book on the GUI
   displayBooks();
