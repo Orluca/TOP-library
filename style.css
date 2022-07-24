@@ -45,9 +45,9 @@ h1 {
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr;
-  width: 90%;
+  width: 100%;
   margin: 0rem auto;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.321);
@@ -246,15 +246,68 @@ hr {
 }
 
 .edit-modal-window {
-  height: 500px;
-  width: 800px;
+  width: 500px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid black;
 }
 
 .modal-input-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal-input-container > div {
+  font-size: 1.5rem;
+}
+
+.modal-input-container > input {
+  font-size: 1.5rem;
+  padding: 0.2rem;
+  width: 80%;
+}
+
+.modal-input-container .toggler-wrapper {
+  transform: scale(1);
+}
+
+.modal-buttons-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-cancel-btn,
+.modal-confirm-btn {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.modal-cancel-btn {
+  background-color: rgb(255, 61, 61);
+}
+
+.modal-cancel-btn:hover {
+  background-color: rgb(176, 75, 75);
+  cursor: pointer;
+}
+
+.modal-confirm-btn {
+  background-color: rgb(73, 207, 61);
+}
+
+.modal-confirm-btn:hover {
+  background-color: rgb(91, 181, 83);
+  cursor: pointer;
 }
 
 .hidden {
