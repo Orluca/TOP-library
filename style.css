@@ -3,22 +3,22 @@
 ########################################################### */
 
 body {
-  --color-text-primary: rgb(0, 0, 0);
-  --color-text-secondary: rgb(255, 255, 255);
+  --color-text-1: rgb(0, 0, 0);
+  --color-text-2: rgb(53, 53, 53);
   --color-background-1: rgb(255, 255, 255);
   --color-background-2: rgb(227, 227, 227);
-  --color-button-1: invert(0.4);
+  --color-button-1: rgb(82, 82, 82);
   --color-button-2: invert(0);
   --color-separator-line-1: rgb(198, 198, 198);
   --color-separator-line-2: rgb(241, 241, 241);
 }
 
 body.dark-mode {
-  --color-text-primary: rgb(255, 255, 255);
-  --color-text-secondary: rgb(0, 0, 0);
-  --color-background-1: rgb(51, 51, 51);
-  --color-background-2: rgb(65, 65, 65);
-  --color-button-1: invert(0.8);
+  --color-text-1: rgb(255, 255, 255);
+  --color-text-2: rgb(209, 209, 209);
+  --color-background-1: rgb(29, 29, 29);
+  --color-background-2: rgb(44, 44, 44);
+  --color-button-1: rgb(222, 222, 222);
   --color-button-2: invert(0.9);
   --color-separator-line-1: rgb(158, 158, 158);
   --color-separator-line-2: rgb(218, 218, 218);
@@ -34,7 +34,7 @@ body.dark-mode {
 
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: var(--color-text-primary);
+  color: var(--color-text-1);
   display: flex;
   justify-content: center;
   background-color: var(--color-background-1);
@@ -78,6 +78,7 @@ h1 {
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
+  color: var(--color-text-2);
 }
 
 .input-container > input {
@@ -89,7 +90,7 @@ h1 {
 
 .add-book-button {
   background-color: #61a0f3;
-  color: white;
+  color: var(--color-background-1);
   padding: 0.5rem 0.8rem;
   border: none;
   border-radius: 5px;
@@ -180,25 +181,26 @@ hr {
 }
 
 #delete-btn {
-  height: 30px;
-  filter: var(--color-button-1);
+  color: var(--color-button-1);
   justify-self: center;
+  align-self: center;
+  font-size: 1.5rem;
 }
 
 #delete-btn:hover {
   cursor: pointer;
-  filter: invert(21%) sepia(100%) saturate(7414%) hue-rotate(359deg) brightness(94%) contrast(117%);
+  color: #d43737;
 }
 
 #edit-btn {
-  height: 30px;
-  filter: var(--color-button-1);
+  color: var(--color-button-1);
   justify-self: center;
+  font-size: 1.5rem;
 }
 
 #edit-btn:hover {
   cursor: pointer;
-  filter: invert(21%) sepia(100%) saturate(7414%) hue-rotate(220deg) brightness(300%) contrast(75%) opacity(100%);
+  color: #457ec9;
 }
 
 /* ############################################################
@@ -346,9 +348,12 @@ hr {
   background-color: transparent;
   border: none;
   margin: 0.3rem;
+  font-size: 1.5rem;
+  color: var(--color-button-1);
 }
 .settings-button:hover {
   cursor: pointer;
+  color: rgb(150, 150, 150);
 }
 
 .settings-button > img {
@@ -380,7 +385,25 @@ hr {
 }
 
 /* ############################################################
-######################### SECTIONNAME #########################
+######################### GITHUB LINK #########################
+############################################################ */
+
+.github-link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  margin: 1rem;
+  font-size: clamp(1.1rem, 1.5vw + 1vh, 1.5rem);
+  color: var(--color-button-1);
+}
+
+.github-link:hover {
+  color: rgb(131, 187, 255);
+}
+
+/* ############################################################
+####################### UTILITY CLASSES #######################
 ############################################################ */
 
 .hidden {

@@ -87,8 +87,8 @@ function displayBooks() {
           <div class="toggler-knob"></div>
         </div>
       </label>
-      <img id="edit-btn" src="assets/edit.png">
-      <img id="delete-btn" src="assets/delete.png">
+      <i id="edit-btn" class="fa-solid fa-pen-to-square"></i>
+      <i id="delete-btn" class="fa-solid fa-trash-can"></i>
     </div>
     `
     );
