@@ -5,25 +5,33 @@
 body {
   --color-text-1: rgb(0, 0, 0);
   --color-text-2: rgb(53, 53, 53);
+  --color-text-headers: rgb(0, 0, 0);
   --color-background-1: rgb(255, 255, 255);
   --color-background-2: rgb(227, 227, 227);
   --color-button-1: rgb(82, 82, 82);
   --color-button-2: invert(0);
   --color-separator-line-1: rgb(198, 198, 198);
   --color-separator-line-2: rgb(241, 241, 241);
+  --color-checkbox-active: rgb(132, 238, 55);
+  --color-checkbox-inactive: rgb(238, 81, 81);
+  --color-nth-row: rgba(0, 0, 0, 0.08);
 
   --book-list-columns: 3fr 1.25fr 0.5fr 70px 50px 50px;
 }
 
 body.dark-mode {
-  --color-text-1: rgb(226, 226, 226);
+  --color-text-1: rgb(209, 209, 209);
   --color-text-2: rgb(209, 209, 209);
+  --color-text-headers: rgb(255, 255, 255);
   --color-background-1: rgb(29, 29, 29);
   --color-background-2: rgb(44, 44, 44);
   --color-button-1: rgb(222, 222, 222);
   --color-button-2: invert(0.9);
-  --color-separator-line-1: rgb(158, 158, 158);
+  --color-separator-line-1: rgb(117, 117, 117);
   --color-separator-line-2: rgb(218, 218, 218);
+  --color-checkbox-active: rgb(133, 192, 90);
+  --color-checkbox-inactive: rgb(227, 97, 97);
+  --color-nth-row: rgba(255, 255, 255, 0.02);
 }
 
 *,
@@ -51,6 +59,7 @@ h1 {
   text-align: center;
   font-size: 3.5rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--color-text-headers);
 }
 
 /* ############################################################
@@ -80,7 +89,7 @@ h1 {
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
-  color: var(--color-text-2);
+  color: var(--color-text-1);
 }
 
 .input-container > input {
@@ -92,7 +101,8 @@ h1 {
 
 .add-book-button {
   background-color: #61a0f3;
-  color: var(--color-background-1);
+  /* color: var(--color-background-1); */
+  color: rgb(228, 228, 228);
   padding: 0.5rem 0.8rem;
   border: none;
   border-radius: 5px;
@@ -144,6 +154,7 @@ hr {
   background-color: var(--color-background-2);
   padding: 0.5rem 0;
   text-transform: uppercase;
+  color: var(--color-text-headers);
 }
 
 .book-items-container {
@@ -180,6 +191,11 @@ hr {
   border-bottom: 1px solid var(--color-separator-line-1);
   padding: 0.5rem 0;
   align-items: center;
+  font-size: 1.2rem;
+}
+
+.book-item-container:nth-of-type(2n) {
+  background-color: var(--color-nth-row);
 }
 
 #delete-btn {
@@ -223,11 +239,11 @@ hr {
 }
 
 .toggler-wrapper input[type="checkbox"]:checked + .toggler-slider {
-  background-color: #44cc66;
+  background-color: var(--color-checkbox-active);
 }
 
 .toggler-wrapper .toggler-slider {
-  background-color: rgb(228, 104, 104);
+  background-color: var(--color-checkbox-inactive);
   position: absolute;
   border-radius: 100px;
   top: 0;

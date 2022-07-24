@@ -16,5 +16,7 @@ Library project from "The Odin Project"
 - [ ] refactor
 - [ ] make responsive
 - [ ] dark mode still pretty ugly
+- [ ] nicer looking confirmation window?
+- [ ] sticky title bar on scroll?
 
 ICONS: Google, Pixel perfect, Dave Gandy from Flaticon
