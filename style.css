@@ -66,6 +66,25 @@ body {
   flex-direction: column;
 }
 
+.title-container {
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+
+.title-container > button {
+  border: none;
+  background-color: transparent;
+}
+
+.title-container > button:hover {
+  cursor: pointer;
+}
+
+.sort-btn-icon {
+  width: 15px;
+}
+
 /* ############################################################
 ########################## BOOK ITEM ##########################
 ############################################################ */

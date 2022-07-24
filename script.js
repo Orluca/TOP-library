@@ -163,12 +163,12 @@ init();
 
 // SORTING STUFF
 
-const $titleHeader = document.querySelector(".title-header");
-const $authorHeader = document.querySelector(".author-header");
-const $yearHeader = document.querySelector(".year-header");
-const $readStatusHeader = document.querySelector(".read-status-header");
+const $btnSortByTitle = document.querySelector("#sort-btn-title");
+const $btnSortByAuthor = document.querySelector("#sort-btn-author");
+const $btnSortByYear = document.querySelector("#sort-btn-year");
+const $btnSortByReadStatus = document.querySelector("#sort-btn-read-status");
 
-$titleHeader.addEventListener("click", function () {
+$btnSortByTitle.addEventListener("click", function () {
   if (currentlySortedBy !== "title-asc") {
     myLibrary.sort((a, b) => a.title.localeCompare(b.title));
     currentlySortedBy = "title-asc";
@@ -179,11 +179,9 @@ $titleHeader.addEventListener("click", function () {
   displayBooks();
 });
 
-$authorHeader.addEventListener("click", function () {
+$btnSortByAuthor.addEventListener("click", function () {
   if (currentlySortedBy !== "author-asc") {
     myLibrary.sort((a, b) => {
-      // a.author.localeCompare(b.author);
-
       if (a.author > b.author) {
         return 1;
       } else if (a.author < b.author) {
@@ -206,7 +204,7 @@ $authorHeader.addEventListener("click", function () {
   displayBooks();
 });
 
-$yearHeader.addEventListener("click", function () {
+$btnSortByYear.addEventListener("click", function () {
   if (currentlySortedBy !== "year-asc") {
     myLibrary.sort((a, b) => a.year - b.year);
     currentlySortedBy = "year-asc";
@@ -217,7 +215,7 @@ $yearHeader.addEventListener("click", function () {
   displayBooks();
 });
 
-$readStatusHeader.addEventListener("click", function () {
+$btnSortByReadStatus.addEventListener("click", function () {
   if (currentlySortedBy !== "read-status-asc") {
     myLibrary.sort((a, b) => {
       // First, sort by the read status
@@ -280,3 +278,9 @@ $modalConfirmBtn.addEventListener("click", function (e) {
   displayBooks();
   closeModal();
 });
+
+function getNumberOfReadBooks() {
+  return myLibrary.reduce((acc, book) => (acc += book.isRead ? 1 : 0), 0);
+}
+
+console.log(getNumberOfReadBooks());

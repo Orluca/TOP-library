@@ -6,10 +6,11 @@ Library project from "The Odin Project"
 
 - [ ] Dark Mode
 - [ ] Statistics (how many books, how many read)
-- [ ] Edit existing books
+- [x] Edit existing books
 - [ ] Delete All button
 - [ ] Info hover button giving short explanation and feature overview
 - [ ] Add proper error message for adding new book
-- [ ] Confirmation window for DELETE buttons
+- [x] Confirmation window for DELETE buttons
+- [ ] Github button
 
-ICONS: Google, Pixel perfect from Flaticon
+ICONS: Google, Pixel perfect, Dave Gandy from Flaticon
