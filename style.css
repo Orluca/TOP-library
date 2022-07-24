@@ -16,7 +16,7 @@ body {
   --color-checkbox-inactive: rgb(238, 81, 81);
   --color-nth-row: rgba(0, 0, 0, 0.08);
 
-  --book-list-columns: 3fr 1.25fr 0.5fr 70px 50px 50px;
+  --book-list-columns: 3fr 1.25fr 0.5fr 70px 40px 40px;
 }
 
 body.dark-mode {
@@ -152,7 +152,7 @@ hr {
   grid-template-columns: var(--book-list-columns);
   border-bottom: 1px solid var(--color-separator-line-1);
   background-color: var(--color-background-2);
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   text-transform: uppercase;
   color: var(--color-text-headers);
   position: sticky;
@@ -192,7 +192,7 @@ hr {
   display: grid;
   grid-template-columns: var(--book-list-columns);
   border-bottom: 1px solid var(--color-separator-line-1);
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   align-items: center;
   font-size: 1.2rem;
 }
@@ -203,7 +203,7 @@ hr {
 
 #delete-btn {
   color: var(--color-button-1);
-  justify-self: center;
+  justify-self: flex-end;
   align-self: center;
   font-size: 1.5rem;
 }
