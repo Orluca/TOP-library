@@ -287,6 +287,11 @@ function getNumberOfReadBooks() {
   return myLibrary.reduce((acc, book) => (acc += book.isRead ? 1 : 0), 0);
 }
 
+function deleteAllBooks() {
+  if (!confirm("This will delete ALL books from your library. Are you sure you want to continue?")) return;
+  localStorage.clear();
+}
+
 const $settingsModal = document.querySelector(".settings-modal");
 const $btnSettings = document.querySelector(".settings-button");
 
@@ -304,4 +309,11 @@ window.addEventListener("click", function (e) {
   if (e.target.closest(".settings-modal")) return;
   if (e.target.closest(".settings-button")) return;
   $settingsModal.classList.add("hidden");
+});
+
+const $btnDarkMode = document.querySelector(".dark-mode-btn");
+
+$btnDarkMode.addEventListener("click", function () {
+  console.log("Lkjsdf");
+  document.body.classList.toggle("dark-mode");
 });
