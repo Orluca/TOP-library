@@ -307,6 +307,7 @@ hr {
 .edit-modal-window > h2 {
   text-align: center;
   font-size: 3rem;
+  color: var(--color-text-headers);
 }
 
 .edit-modal-window > hr {
@@ -322,12 +323,14 @@ hr {
 
 .modal-input-container > label {
   font-size: 1.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .modal-input-container > input {
   font-size: 1.5rem;
   padding: 0.2rem;
   width: 100%;
+  background-color: #d8d8d8;
 }
 
 .modal-input-container .toggler-wrapper {
@@ -410,9 +413,42 @@ hr {
   border: 1px solid var(--color-separator-line-1);
 }
 
+.settings-modal > hr {
+  margin: 0;
+}
+
 .read-statistics {
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0;
+  color: var(--color-text-headers);
+}
+.dark-mode-btn {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-background-1);
+  border: 1px solid var(--color-text-1);
+  border-radius: 5px;
+  color: var(--color-text-1);
+}
+
+.dark-mode-btn:hover {
+  cursor: pointer;
+}
+
+.delete-all-btn {
+  background-color: #d43737;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  color: rgb(224, 224, 224);
+}
+
+.delete-all-btn:hover {
+  cursor: pointer;
+  background-color: #9c3838;
 }
 
 /* ############################################################
