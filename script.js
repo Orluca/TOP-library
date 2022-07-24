@@ -300,7 +300,7 @@ $modalConfirmBtn.addEventListener("click", function (e) {
   myLibrary[id].title = $modalTitle.value;
   myLibrary[id].author = $modalAuthor.value;
   myLibrary[id].year = $modalYear.value;
-  myLibrary[id].isRead = $modalYear.checked;
+  myLibrary[id].isRead = $modalReadStatus.checked;
 
   saveToLocalStorage();
   displayBooks();
