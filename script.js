@@ -291,6 +291,12 @@ const $settingsModal = document.querySelector(".settings-modal");
 const $btnSettings = document.querySelector(".settings-button");
 
 $btnSettings.addEventListener("click", function () {
+  const $readBooksAmount = document.querySelector(".read-books-amount");
+  const $totalBooksAmount = document.querySelector(".total-books-amount");
+
+  $readBooksAmount.textContent = getNumberOfReadBooks();
+  $totalBooksAmount.textContent = myLibrary.length;
+
   $settingsModal.classList.toggle("hidden");
 });
 
