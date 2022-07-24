@@ -11,6 +11,8 @@ body {
   --color-button-2: invert(0);
   --color-separator-line-1: rgb(198, 198, 198);
   --color-separator-line-2: rgb(241, 241, 241);
+
+  --book-list-columns: 3fr 1.25fr 0.5fr 70px 50px 50px;
 }
 
 body.dark-mode {
@@ -137,7 +139,7 @@ hr {
 
 .list-view-headers-container {
   display: grid;
-  grid-template-columns: 3fr 2fr 0.5fr 70px 50px 50px;
+  grid-template-columns: var(--book-list-columns);
   border-bottom: 1px solid var(--color-separator-line-1);
   background-color: var(--color-background-2);
   padding: 0.5rem 0;
@@ -174,7 +176,7 @@ hr {
 ############################################################ */
 .book-item-container {
   display: grid;
-  grid-template-columns: 3fr 2fr 0.5fr 70px 50px 50px;
+  grid-template-columns: var(--book-list-columns);
   border-bottom: 1px solid var(--color-separator-line-1);
   padding: 0.5rem 0;
   align-items: center;
@@ -283,20 +285,30 @@ hr {
   border: 1px solid black;
 }
 
-.modal-input-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.edit-modal-window > h2 {
+  text-align: center;
+  font-size: 3rem;
 }
 
-.modal-input-container > div {
-  font-size: 1.5rem;
+.edit-modal-window > hr {
+  margin: 0.5rem 0;
+}
+
+.modal-input-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: flex-start;
+}
+
+.modal-input-container > label {
+  font-size: 1.25rem;
 }
 
 .modal-input-container > input {
   font-size: 1.5rem;
   padding: 0.2rem;
-  width: 80%;
+  width: 100%;
 }
 
 .modal-input-container .toggler-wrapper {
@@ -347,7 +359,7 @@ hr {
   right: 0;
   background-color: transparent;
   border: none;
-  margin: 0.3rem;
+  margin: 0.5rem;
   font-size: 1.5rem;
   color: var(--color-button-1);
 }
@@ -393,7 +405,7 @@ hr {
   bottom: 0;
   right: 0;
   z-index: 2;
-  margin: 1rem;
+  margin: 0.5rem;
   font-size: clamp(1.1rem, 1.5vw + 1vh, 1.5rem);
   color: var(--color-button-1);
 }

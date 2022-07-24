@@ -7,6 +7,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <script type="module" src="default_books.js" defer></script> -->
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -54,27 +55,33 @@
     </div>
     <div class="edit-modal-background hidden">
       <div class="edit-modal-window" data-id="0">
+        <h2>EDIT BOOK</h2>
+        <hr />
         <div class="modal-input-container">
-          <div>Title:</div>
-          <input class="modal-input-title" type="text" />
+          <label for="modal-input-title">Title:</label>
+          <input id="modal-input-title" type="text" />
         </div>
+        <hr />
         <div class="modal-input-container">
-          <div>Author:</div>
-          <input class="modal-input-author" type="text" />
+          <label for="modal-input-author">Author:</label>
+          <input id="modal-input-author" type="text" />
         </div>
+        <hr />
         <div class="modal-input-container">
-          <div>Year:</div>
-          <input class="modal-input-year" type="text" />
+          <label for="modal-input-year">Year:</label>
+          <input id="modal-input-year" type="text" />
         </div>
+        <hr />
         <div class="modal-input-container">
-          <div>Read:</div>
+          <label for="modal-input-read">Read:</label>
           <label class="toggler-wrapper">
-            <input class="modal-input-read-status" type="checkbox" id="read-checkbox" ${book.isRead ? "checked" : ""}>
+            <input id="modal-input-read-status" type="checkbox" ${book.isRead ? "checked" : ""}>
             <div class="toggler-slider">
               <div class="toggler-knob"></div>
             </div>
           </label>
         </div>
+        <hr />
         <div class="modal-buttons-container">
           <button class="modal-cancel-btn">Cancel</button>
           <button class="modal-confirm-btn">Confirm</button>
