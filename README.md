@@ -7,12 +7,14 @@ Library project from "The Odin Project"
 - [x] Dark Mode
 - [x] Statistics (how many books, how many read)
 - [x] Edit existing books
-- [ ] Delete All button
-- [ ] Info hover button giving short explanation and feature overview
+- [x] Delete All button
 - [x] Add proper error message for adding new book
 - [x] Confirmation window for DELETE buttons
 - [x] Github button
-- [ ] save dark mode settings
+- [x] save dark mode settings
+- [ ] Info hover button giving short explanation and feature overview
 - [ ] refactor
+- [ ] make responsive
+- [ ] dark mode still pretty ugly
 
 ICONS: Google, Pixel perfect, Dave Gandy from Flaticon

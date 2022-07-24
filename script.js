@@ -10,7 +10,6 @@ const defaultBooks = [
   { title: "Moby Dick", author: "Melville, Herman", year: 1851, isRead: false },
   { title: "Typee", author: "Melville, Herman", year: 1846, isRead: false },
   { title: "Billy Budd", author: "Melville, Herman", year: 1924, isRead: false },
-  { title: "Typee", author: "Melville, Herman", year: 1846, isRead: false },
   { title: "The Stand", author: "King, Stephen", year: 1978, isRead: true },
   { title: "Firestarter", author: "King, Stephen", year: 1980, isRead: false },
   { title: "Pet Sematary", author: "King, Stephen", year: 1983, isRead: true },
@@ -211,6 +210,7 @@ $btnSortByTitle.addEventListener("click", function () {
     currentlySortedBy = "title-desc";
   }
   displayBooks();
+  saveToLocalStorage();
 });
 
 $btnSortByAuthor.addEventListener("click", function () {
@@ -236,6 +236,7 @@ $btnSortByAuthor.addEventListener("click", function () {
     currentlySortedBy = "author-desc";
   }
   displayBooks();
+  saveToLocalStorage();
 });
 
 $btnSortByYear.addEventListener("click", function () {
@@ -247,6 +248,7 @@ $btnSortByYear.addEventListener("click", function () {
     currentlySortedBy = "year-desc";
   }
   displayBooks();
+  saveToLocalStorage();
 });
 
 $btnSortByReadStatus.addEventListener("click", function () {
@@ -281,6 +283,7 @@ $btnSortByReadStatus.addEventListener("click", function () {
     currentlySortedBy = "read-status-desc";
   }
   displayBooks();
+  saveToLocalStorage();
 });
 
 // EDIT BUTTON
