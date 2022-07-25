@@ -77,11 +77,10 @@ h1 {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 0.5fr 1fr;
   align-items: center;
-  /* width: 100%; */
-  margin: 0rem auto;
+  margin: 2rem auto;
   padding: 1rem 2rem;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.321);
   min-width: 390px;
 }
@@ -283,6 +282,10 @@ td {
 #edit-btn:hover {
   cursor: pointer;
   color: #457ec9;
+}
+
+#sort-btn-year {
+  margin-right: 0.5rem;
 }
 
 /* ############################################################
@@ -562,7 +565,8 @@ td {
   }
 
   .add-book-container .input-container:nth-child(4) {
-    margin: 0.5rem 0;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
   }
 
   .input-container {

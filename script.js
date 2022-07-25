@@ -361,6 +361,7 @@ $btnDarkMode.addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
   darkModeIsActive = darkModeIsActive ? false : true;
   saveToLocalStorage();
+  closeSettingsModal();
 });
 
 $btnDeleteAll.addEventListener("click", function () {
