@@ -16,20 +16,6 @@ const defaultBooks = [
   { title: "Doctor Sleep", author: "King, Stephen", year: 2013, isRead: true },
   { title: "Steelheart", author: "Sanderson, Brandon", year: 2013, isRead: true },
   { title: "The Way of Kings", author: "Sanderson, Brandon", year: 2010, isRead: true },
-  { title: "A Clockwork Orange", author: "Burgess, Anthony", year: 1962, isRead: false },
-  { title: "The Fellowship of the Ring", author: "Tolkien, J.R.R.", year: 1954, isRead: true },
-  { title: "The Two Towers", author: "Tolkien, J.R.R.", year: 1954, isRead: true },
-  { title: "The Return of the King", author: "Tolkien, J.R.R.", year: 1955, isRead: true },
-  { title: "The Great Gatsby", author: "Fitzgerald, F. Scott", year: 1925, isRead: false },
-  { title: "Moby Dick", author: "Melville, Herman", year: 1851, isRead: false },
-  { title: "Typee", author: "Melville, Herman", year: 1846, isRead: false },
-  { title: "Billy Budd", author: "Melville, Herman", year: 1924, isRead: false },
-  { title: "The Stand", author: "King, Stephen", year: 1978, isRead: true },
-  { title: "Firestarter", author: "King, Stephen", year: 1980, isRead: false },
-  { title: "Pet Sematary", author: "King, Stephen", year: 1983, isRead: true },
-  { title: "Doctor Sleep", author: "King, Stephen", year: 2013, isRead: true },
-  { title: "Steelheart", author: "Sanderson, Brandon", year: 2013, isRead: true },
-  { title: "The Way of Kings", author: "Sanderson, Brandon", year: 2010, isRead: true },
 ];
 
 // ###############################################################
@@ -105,25 +91,59 @@ function addBookToLibrary() {
 
 function displayBooks() {
   const bookContainer = document.querySelector(".book-items-container");
-  bookContainer.innerHTML = "";
+  const bookTable = document.querySelector(".book-list-table");
+  // bookContainer.innerHTML = "";
+
+  bookTable.innerHTML = `
+    <tr>
+      <th>
+        <div class="title-container">
+          <h3 class="title-header">Title</h3>
+          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-title"></i></button>
+        </div>
+      </th>
+      <th>
+        <div class="title-container">
+          <h3 class="author-header">Author</h3>
+          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-author"></i></button>
+        </div>
+      </th>
+      <th>
+        <div class="title-container">
+          <h3 class="year-header">Year</h3>
+          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-year"></i></button>
+        </div>
+      </th>
+      <th>
+        <div class="title-container">
+          <h3 class="read-status-header">Read</h3>
+          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-read-status"></i></button>
+        </div>
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+`;
 
   myLibrary.forEach((book, i) => {
-    bookContainer.insertAdjacentHTML(
+    bookTable.insertAdjacentHTML(
       "beforeend",
       `
-    <div class="book-item-container" data-id="${i}">
-      <div class="title-value">${book.title}</div>
-      <div class="author-value">${book.author}</div>
-      <div class="year-value">${book.year}</div>
-      <label class="toggler-wrapper">
-        <input type="checkbox" class="read-status-value" id="read-checkbox" ${book.isRead ? "checked" : ""}>
-        <div class="toggler-slider">
-          <div class="toggler-knob"></div>
-        </div>
-      </label>
-      <i id="edit-btn" class="fa-solid fa-pen-to-square"></i>
-      <i id="delete-btn" class="fa-solid fa-trash-can"></i>
-    </div>
+    <tr class="book-item-container" data-id="${i}">
+      <td class="title-value">${book.title}</td>
+      <td class="author-value">${book.author}</td>
+      <td class="year-value">${book.year}</td>
+      <td>
+        <label class="toggler-wrapper">
+          <input type="checkbox" class="read-status-value" id="read-checkbox" ${book.isRead ? "checked" : ""}>
+          <div class="toggler-slider">
+            <div class="toggler-knob"></div>
+          </div>
+        </label>
+      </td>
+      <td><i id="edit-btn" class="fa-solid fa-pen-to-square"></i></td>
+      <td><i id="delete-btn" class="fa-solid fa-trash-can"></i></td>
+    </tr>
     `
     );
   });
