@@ -83,7 +83,7 @@ h1 {
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.321);
-  min-width: 330px;
+  min-width: 390px;
 }
 
 .input-container {
@@ -174,7 +174,7 @@ hr {
 } */
 
 table {
-  border-spacing: 0 2px;
+  border-spacing: 0 0;
 }
 
 tr:nth-child(even) {
@@ -231,6 +231,7 @@ tr:nth-child(even) {
 
 td {
   padding: 0.3rem 0;
+  padding-right: 0.5rem;
 }
 
 /* .book-item-container:nth-of-type(2n) {
@@ -439,7 +440,7 @@ td {
 ############################################################ */
 
 .settings-button {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   background-color: transparent;
@@ -519,7 +520,7 @@ td {
 ############################################################ */
 
 .github-link {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
   z-index: 2;
@@ -579,5 +580,7 @@ td {
   .github-link {
     top: 0;
     left: 0;
+    bottom: auto;
+    right: auto;
   }
 }
