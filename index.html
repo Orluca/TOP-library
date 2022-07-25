@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Library</title>
+    <title>Book Library</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <script type="module" src="default_books.js" defer></script> -->
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -49,6 +48,8 @@
             <h3 class="read-status-header">Read</h3>
             <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-read-status"></i></button>
           </div>
+          <!-- <i id="edit-btn" class="fa-solid fa-pen-to-square"></i>
+          <i id="delete-btn" class="fa-solid fa-trash-can"></i> -->
         </div>
         <div class="book-items-container"></div>
       </div>
@@ -69,7 +70,7 @@
         <hr />
         <div class="modal-input-container">
           <label for="modal-input-year">Year:</label>
-          <input id="modal-input-year" type="text" />
+          <input id="modal-input-year" type="number" />
         </div>
         <hr />
         <div class="modal-input-container">

@@ -12,11 +12,11 @@ Library project from "The Odin Project"
 - [x] Confirmation window for DELETE buttons
 - [x] Github button
 - [x] save dark mode settings
-- [ ] Info hover button giving short explanation and feature overview
+- [x] Info hover button giving short explanation and feature overview
 - [ ] refactor
 - [ ] make responsive
 - [x] dark mode still pretty ugly
-- [ ] nicer looking confirmation window?
+- [x] nicer looking confirmation window?
 - [x] sticky title bar on scroll?
 
 ICONS: Google, Pixel perfect, Dave Gandy from Flaticon
