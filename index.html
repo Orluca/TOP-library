@@ -14,19 +14,18 @@
       <h1>MY BOOK LIBRARY</h1>
       <hr />
       <div class="add-book-container">
-        <label id="title-label" for="title-input">Title</label>
-        <input id="title-input" type="text" />
-        <label id="author-label" for="author-input">Author</label>
-        <input id="author-input" type="text" />
-        <label id="year-label" for="year-input">Year</label>
-        <input id="year-input" type="number" />
-        <label id="read-status-label" for="read-status-input">Read?</label>
-        <label class="toggler-wrapper">
-          <input type="checkbox" id="read-status-input" />
-          <div class="toggler-slider">
-            <div class="toggler-knob"></div>
-          </div>
-        </label>
+        <div class="input-container"><label for="title-input">Title</label><input id="title-input" type="text" /></div>
+        <div class="input-container"><label for="author-input">Author</label><input id="author-input" type="text" /></div>
+        <div class="input-container"><label for="year-input">Year</label><input id="year-input" type="number" /></div>
+        <div class="input-container">
+          <label for="read-status-input">Read?</label>
+          <label class="toggler-wrapper">
+            <input type="checkbox" id="read-status-input" />
+            <div class="toggler-slider">
+              <div class="toggler-knob"></div>
+            </div>
+          </label>
+        </div>
         <button class="add-book-button">Add New Book</button>
         <div class="add-book-error hidden">Please fill out everything.</div>
       </div>
