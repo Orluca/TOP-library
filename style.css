@@ -18,7 +18,7 @@ body {
   --color-edit-inputs: rgb(255, 255, 255);
 
   --book-list-columns: 3fr 1.25fr 0.5fr 0.35fr 0.15fr 0.15fr;
-  /* --book-list-columns: 54% 25% 7.5% 5% 2.5% 2.5%; */
+  /* --book-list-columns: 36vw 15vw 5vw 5vw 2vw 2vw; */
 }
 
 body.dark-mode {
@@ -154,6 +154,7 @@ hr {
 .list-view-headers-container {
   display: grid;
   grid-template-columns: var(--book-list-columns);
+  column-gap: 0.5rem;
   border-bottom: 1px solid var(--color-separator-line-1);
   background-color: var(--color-background-2);
   padding: 0.5rem 1rem;
@@ -162,7 +163,6 @@ hr {
   position: sticky;
   top: 0;
   z-index: 1;
-  column-gap: 0.5rem;
 }
 
 /* .list-view-headers-container > i {
