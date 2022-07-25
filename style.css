@@ -76,7 +76,7 @@ h1 {
 
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 0.5fr 1fr;
-  /* width: 100%; */
+  grid-template-rows: 1fr 2fr;
   margin: 0rem auto;
   padding: 1rem 2rem;
   border-radius: 10px;
@@ -137,6 +137,42 @@ hr {
   grid-column: 1 / 6;
   justify-self: center;
   margin-top: 1rem;
+}
+
+#title-label {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+#title-input {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+#author-label {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+#author-input {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+#year-label {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+#year-input {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+#read-status-label {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+.toggler-wrapper {
+  grid-area: 2 / 4 / 3 / 5;
+}
+
+.add-book-button {
+  grid-area: 1 / 5 / 3 / 6;
 }
 
 /* ############################################################
