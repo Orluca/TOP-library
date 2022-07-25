@@ -56,7 +56,7 @@ body {
 
 .app-container {
   margin: 2rem;
-  width: 70%;
+  width: 80%;
 }
 
 h1 {
@@ -83,6 +83,7 @@ h1 {
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.321);
+  min-width: 330px;
 }
 
 .input-container {
@@ -115,6 +116,7 @@ h1 {
   font-weight: bold;
   font-size: 1rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  height: 100%;
 }
 
 .add-book-button:hover {
@@ -541,4 +543,41 @@ td {
 .blurry {
   filter: blur(8px);
   -webkit-filter: blur(8px);
+}
+
+@media only screen and (max-width: 750px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  .app-container {
+    width: 100%;
+  }
+
+  .add-book-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 2fr 0.5fr 1fr;
+    height: 250px;
+  }
+
+  .add-book-container .input-container:nth-child(4) {
+    margin: 0.5rem 0;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 20px; */
+  }
+
+  .input-container > input {
+    width: 80%;
+  }
+
+  .github-link {
+    top: 0;
+    left: 0;
+  }
 }
