@@ -90,50 +90,19 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-  const bookContainer = document.querySelector(".book-items-container");
-  const bookTable = document.querySelector(".book-list-table");
-  // bookContainer.innerHTML = "";
+  const $tableBody = document.querySelector(".table-body");
 
-  bookTable.innerHTML = `
-    <tr>
-      <th>
-        <div class="title-container">
-          <h3 class="title-header">Title</h3>
-          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-title"></i></button>
-        </div>
-      </th>
-      <th>
-        <div class="title-container">
-          <h3 class="author-header">Author</h3>
-          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-author"></i></button>
-        </div>
-      </th>
-      <th>
-        <div class="title-container">
-          <h3 class="year-header">Year</h3>
-          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-year"></i></button>
-        </div>
-      </th>
-      <th>
-        <div class="title-container">
-          <h3 class="read-status-header">Read</h3>
-          <button><i class="fa-solid fa-sort sort-btn-icon" id="sort-btn-read-status"></i></button>
-        </div>
-      </th>
-      <th></th>
-      <th></th>
-    </tr>
-`;
+  $tableBody.innerHTML = "";
 
   myLibrary.forEach((book, i) => {
-    bookTable.insertAdjacentHTML(
+    $tableBody.insertAdjacentHTML(
       "beforeend",
       `
     <tr class="book-item-container" data-id="${i}">
-      <td class="title-value">${book.title}</td>
-      <td class="author-value">${book.author}</td>
-      <td class="year-value">${book.year}</td>
-      <td>
+      <td class="title-cell">${book.title}</td>
+      <td class="author-cell">${book.author}</td>
+      <td class="year-cell">${book.year}</td>
+      <td class="read-cell">
         <label class="toggler-wrapper">
           <input type="checkbox" class="read-status-value" id="read-checkbox" ${book.isRead ? "checked" : ""}>
           <div class="toggler-slider">
@@ -141,8 +110,8 @@ function displayBooks() {
           </div>
         </label>
       </td>
-      <td><i id="edit-btn" class="fa-solid fa-pen-to-square"></i></td>
-      <td><i id="delete-btn" class="fa-solid fa-trash-can"></i></td>
+      <td class="edit-cell"><i id="edit-btn" class="fa-solid fa-pen-to-square"></i></td>
+      <td class="delete-cell"><i id="delete-btn" class="fa-solid fa-trash-can"></i></td>
     </tr>
     `
     );
@@ -163,9 +132,9 @@ function deleteEntry(id) {
 
 function editEntry(id, element) {
   const itemContainer = element.closest(".book-item-container");
-  const titleElement = itemContainer.querySelector(".title-value");
-  const authorElement = itemContainer.querySelector(".author-value");
-  const yearElement = itemContainer.querySelector(".year-value");
+  const titleElement = itemContainer.querySelector(".title-cell");
+  const authorElement = itemContainer.querySelector(".author-cell");
+  const yearElement = itemContainer.querySelector(".year-cell");
   const readStatusElement = itemContainer.querySelector(".read-status-value");
 
   $modalBackground.classList.remove("hidden");
@@ -192,7 +161,7 @@ function init() {
     myLibrary = savedLibrary;
   }
 
-  displayBooks(myLibrary);
+  displayBooks();
 }
 
 // ###############################################################
@@ -207,6 +176,7 @@ $containerAddBook.addEventListener("keypress", function (e) {
 });
 
 $containerBookList.addEventListener("click", function (e) {
+  if (!e.target.closest(".book-item-container")) return;
   const id = e.target.closest(".book-item-container").dataset.id;
 
   // Listen for clicks on the "read" checkboxes

@@ -18,7 +18,8 @@ body {
   --color-edit-inputs: rgb(255, 255, 255);
 
   --book-list-columns: 3fr 1.25fr 0.5fr 0.35fr 0.15fr 0.15fr;
-  /* --book-list-columns: 36vw 15vw 5vw 5vw 2vw 2vw; */
+
+  --table-padding-sides: 0.5rem;
 }
 
 body.dark-mode {
@@ -169,6 +170,23 @@ hr {
   opacity: 0;
 } */
 
+table {
+  border-spacing: 0 2px;
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-nth-row);
+}
+
+.table-headers {
+  background-color: var(--color-background-2);
+  font-size: 1.25rem;
+}
+
+.table-headers > th {
+  padding: 0.3rem 0;
+}
+
 .book-items-container {
   display: flex;
   flex-direction: column;
@@ -200,15 +218,44 @@ hr {
 .book-item-container {
   /* display: grid; */
   /* grid-template-columns: var(--book-list-columns); */
-  border-bottom: 1px solid var(--color-separator-line-1);
-  padding: 0.5rem 1rem;
-  align-items: center;
+  /* border-bottom: 1px solid var(--color-separator-line-1); */
+  /* padding: 0.5rem 1rem; */
+  /* align-items: center; */
   font-size: 1.2rem;
-  column-gap: 0.5rem;
+  /* column-gap: 0.5rem; */
+  /* padding: 1rem 0; */
 }
 
-.book-item-container:nth-of-type(2n) {
+td {
+  padding: 0.3rem 0;
+}
+
+/* .book-item-container:nth-of-type(2n) {
   background-color: var(--color-nth-row);
+} */
+
+.title-cell,
+.title-header {
+  padding-left: var(--table-padding-sides);
+}
+
+.delete-cell {
+  padding-right: var(--table-padding-sides);
+  padding-left: 0.5rem;
+  text-align: end;
+  width: 3%;
+}
+
+.edit-cell {
+  width: 3%;
+}
+
+.read-cell {
+  width: 5%;
+}
+
+.year-cell {
+  width: 10%;
 }
 
 #delete-btn {
