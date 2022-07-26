@@ -1,6 +1,6 @@
 "use strict";
 
-// A list of default books, to gain a better understanding of how the app works, without having to add a bunch of books yourself
+// A list of default books, so that a first-time user can gain a better understanding of how the app works, without having to add a bunch of books themselves first
 const defaultBooks = [
   { title: "A Clockwork Orange", author: "Burgess, Anthony", year: 1962, isRead: false },
   { title: "The Fellowship of the Ring", author: "Tolkien, J.R.R.", year: 1954, isRead: true },
@@ -29,15 +29,33 @@ let currentlySortedBy;
 // #################### HTML ELEMENT SELECTORS ###################
 // ###############################################################
 const $appContainer = document.querySelector(".app-container");
+
+// ADD NEW BOOK SECTION
 const $btnAddBook = document.querySelector(".add-book-button");
 const $containerAddBook = document.querySelector(".add-book-container");
-const $containerBookList = document.querySelector(".table-container");
 
+// BOOK TABLE
+const $containerBookList = document.querySelector(".table-container");
+const $btnSortByTitle = document.querySelector("#sort-btn-title");
+const $btnSortByAuthor = document.querySelector("#sort-btn-author");
+const $btnSortByYear = document.querySelector("#sort-btn-year");
+const $btnSortByReadStatus = document.querySelector("#sort-btn-read-status");
+
+// EDIT MODAL
+const $modalBackground = document.querySelector(".edit-modal-background");
+const $modalConfirmBtn = document.querySelector(".modal-confirm-btn");
+const $modalCancelBtn = document.querySelector(".modal-cancel-btn");
 const $modalWindow = document.querySelector(".edit-modal-window");
 const $modalTitle = document.querySelector("#modal-input-title");
 const $modalAuthor = document.querySelector("#modal-input-author");
 const $modalYear = document.querySelector("#modal-input-year");
 const $modalReadStatus = document.querySelector("#modal-input-read-status");
+
+// SETTINGS MODAL
+const $settingsModal = document.querySelector(".settings-modal");
+const $btnSettings = document.querySelector(".settings-button");
+const $btnDarkMode = document.querySelector(".dark-mode-btn");
+const $btnDeleteAll = document.querySelector(".delete-all-btn");
 
 // ###############################################################
 // ########################### CLASSES ###########################
@@ -148,34 +166,27 @@ function editEntry(id, element) {
   $modalReadStatus.checked = readStatusElement.checked;
 }
 
-function init() {
-  const savedLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-  darkModeIsActive = JSON.parse(localStorage.getItem("darkModeIsActive"));
-
-  if (darkModeIsActive) document.body.classList.add("dark-mode");
-  else document.body.classList.remove("dark-mode");
-
-  if (savedLibrary?.length === 0 || !savedLibrary) {
-    myLibrary = defaultBooks;
-  } else {
-    myLibrary = savedLibrary;
-  }
-
-  displayBooks();
+function closeModal() {
+  $modalBackground.classList.add("hidden");
+  $appContainer.classList.remove("blurry");
 }
 
-// ###############################################################
-// ####################### EVENT LISTENERS #######################
-// ###############################################################
+function getNumberOfReadBooks() {
+  return myLibrary.reduce((acc, book) => (acc += book.isRead ? 1 : 0), 0);
+}
 
-$btnAddBook.addEventListener("click", addBookToLibrary);
+function closeSettingsModal() {
+  $settingsModal.classList.add("hidden");
+}
 
-$containerAddBook.addEventListener("keypress", function (e) {
-  if (e.key !== "Enter") return;
-  addBookToLibrary();
-});
+function deleteAllBooks() {
+  if (!confirm("This will delete ALL books from your library. Are you sure you want to continue?")) return;
+  myLibrary = [];
+  saveToLocalStorage();
+  closeSettingsModal();
+}
 
-$containerBookList.addEventListener("click", function (e) {
+function handleTablePresses(e) {
   if (!e.target.closest(".book-item-container")) return;
   const id = e.target.closest(".book-item-container").dataset.id;
 
@@ -190,22 +201,10 @@ $containerBookList.addEventListener("click", function (e) {
 
   // Listen for "Delete" button presses
   if (e.target.id === "edit-btn") editEntry(id, e.target);
-});
+}
 
-// ###############################################################
-// ########################## START APP ##########################
-// ###############################################################
-
-init();
-
-// SORTING STUFF
-
-const $btnSortByTitle = document.querySelector("#sort-btn-title");
-const $btnSortByAuthor = document.querySelector("#sort-btn-author");
-const $btnSortByYear = document.querySelector("#sort-btn-year");
-const $btnSortByReadStatus = document.querySelector("#sort-btn-read-status");
-
-$btnSortByTitle.addEventListener("click", function () {
+// SORTING FUNCTIONS
+function sortByTitle() {
   if (currentlySortedBy !== "title-asc") {
     myLibrary.sort((a, b) => a.title.localeCompare(b.title));
     currentlySortedBy = "title-asc";
@@ -215,9 +214,9 @@ $btnSortByTitle.addEventListener("click", function () {
   }
   displayBooks();
   saveToLocalStorage();
-});
+}
 
-$btnSortByAuthor.addEventListener("click", function () {
+function sortByAuthor() {
   if (currentlySortedBy !== "author-asc") {
     myLibrary.sort((a, b) => {
       if (a.author > b.author) {
@@ -241,9 +240,9 @@ $btnSortByAuthor.addEventListener("click", function () {
   }
   displayBooks();
   saveToLocalStorage();
-});
+}
 
-$btnSortByYear.addEventListener("click", function () {
+function sortByYear() {
   if (currentlySortedBy !== "year-asc") {
     myLibrary.sort((a, b) => a.year - b.year);
     currentlySortedBy = "year-asc";
@@ -253,9 +252,9 @@ $btnSortByYear.addEventListener("click", function () {
   }
   displayBooks();
   saveToLocalStorage();
-});
+}
 
-$btnSortByReadStatus.addEventListener("click", function () {
+function sortByReadStatus() {
   if (currentlySortedBy !== "read-status-asc") {
     myLibrary.sort((a, b) => {
       // First, sort by the read status
@@ -288,27 +287,9 @@ $btnSortByReadStatus.addEventListener("click", function () {
   }
   displayBooks();
   saveToLocalStorage();
-});
-
-// EDIT BUTTON
-const $modalBackground = document.querySelector(".edit-modal-background");
-
-function closeModal() {
-  $modalBackground.classList.add("hidden");
-  $appContainer.classList.remove("blurry");
 }
 
-$modalBackground.addEventListener("click", function (e) {
-  if (e.target !== this) return;
-  closeModal();
-});
-
-const $modalConfirmBtn = document.querySelector(".modal-confirm-btn");
-const $modalCancelBtn = document.querySelector(".modal-cancel-btn");
-
-$modalCancelBtn.addEventListener("click", closeModal);
-
-$modalConfirmBtn.addEventListener("click", function (e) {
+function updateBookData() {
   const id = $modalWindow.dataset.id;
   myLibrary[id].title = $modalTitle.value;
   myLibrary[id].author = $modalAuthor.value;
@@ -318,27 +299,9 @@ $modalConfirmBtn.addEventListener("click", function (e) {
   saveToLocalStorage();
   displayBooks();
   closeModal();
-});
-
-function getNumberOfReadBooks() {
-  return myLibrary.reduce((acc, book) => (acc += book.isRead ? 1 : 0), 0);
 }
 
-function closeSettingsModal() {
-  $settingsModal.classList.add("hidden");
-}
-
-function deleteAllBooks() {
-  if (!confirm("This will delete ALL books from your library. Are you sure you want to continue?")) return;
-  myLibrary = [];
-  saveToLocalStorage();
-  closeSettingsModal();
-}
-
-const $settingsModal = document.querySelector(".settings-modal");
-const $btnSettings = document.querySelector(".settings-button");
-
-$btnSettings.addEventListener("click", function () {
+function openAndUpdateSettingsModal() {
   const $readBooksAmount = document.querySelector(".read-books-amount");
   const $totalBooksAmount = document.querySelector(".total-books-amount");
 
@@ -346,25 +309,61 @@ $btnSettings.addEventListener("click", function () {
   $totalBooksAmount.textContent = myLibrary.length;
 
   $settingsModal.classList.toggle("hidden");
-});
+}
 
+function switchDarkLightMode() {
+  document.body.classList.toggle("dark-mode");
+  darkModeIsActive = darkModeIsActive ? false : true;
+  saveToLocalStorage();
+  closeSettingsModal();
+}
+
+function init() {
+  const savedLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  darkModeIsActive = JSON.parse(localStorage.getItem("darkModeIsActive"));
+
+  if (darkModeIsActive) document.body.classList.add("dark-mode");
+  else document.body.classList.remove("dark-mode");
+
+  if (savedLibrary?.length === 0 || !savedLibrary) {
+    myLibrary = defaultBooks;
+  } else {
+    myLibrary = savedLibrary;
+  }
+
+  displayBooks();
+}
+
+// ###############################################################
+// ####################### EVENT LISTENERS #######################
+// ###############################################################
+
+$btnAddBook.addEventListener("click", addBookToLibrary);
+$containerAddBook.addEventListener("keypress", function (e) {
+  if (e.key !== "Enter") return;
+  addBookToLibrary();
+});
+$containerBookList.addEventListener("click", handleTablePresses);
+$btnSortByTitle.addEventListener("click", sortByTitle);
+$btnSortByAuthor.addEventListener("click", sortByAuthor);
+$btnSortByYear.addEventListener("click", sortByYear);
+$btnSortByReadStatus.addEventListener("click", sortByReadStatus);
+$modalBackground.addEventListener("mousedown", function (e) {
+  if (e.target !== this) return;
+  closeModal();
+});
+$modalCancelBtn.addEventListener("click", closeModal);
+$modalConfirmBtn.addEventListener("click", updateBookData);
+$btnSettings.addEventListener("click", openAndUpdateSettingsModal);
 window.addEventListener("click", function (e) {
   if (e.target.closest(".settings-modal")) return;
   if (e.target.closest(".settings-button")) return;
   $settingsModal.classList.add("hidden");
 });
-
-const $btnDarkMode = document.querySelector(".dark-mode-btn");
-const $btnDeleteAll = document.querySelector(".delete-all-btn");
-
-$btnDarkMode.addEventListener("click", function () {
-  document.body.classList.toggle("dark-mode");
-  darkModeIsActive = darkModeIsActive ? false : true;
-  saveToLocalStorage();
-  closeSettingsModal();
-});
-
+$btnDarkMode.addEventListener("click", switchDarkLightMode);
 $btnDeleteAll.addEventListener("click", function () {
   deleteAllBooks();
   displayBooks();
 });
+
+init();
