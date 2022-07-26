@@ -31,7 +31,7 @@ let currentlySortedBy;
 const $appContainer = document.querySelector(".app-container");
 const $btnAddBook = document.querySelector(".add-book-button");
 const $containerAddBook = document.querySelector(".add-book-container");
-const $containerBookList = document.querySelector(".book-items-container");
+const $containerBookList = document.querySelector(".table-container");
 
 const $modalWindow = document.querySelector(".edit-modal-window");
 const $modalTitle = document.querySelector("#modal-input-title");

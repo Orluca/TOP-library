@@ -19,5 +19,6 @@ Library project from "The Odin Project"
 - [x] sticky title bar on scroll?
 - [ ] refactor
 - [ ] behaviour dass default wiedergestellt wird wenn empty nochmal überdenken?
+- [ ] hover color on dark mdoe button
 
 ICONS: Google, Pixel perfect, Dave Gandy from Flaticon
