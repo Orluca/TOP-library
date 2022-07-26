@@ -210,6 +210,7 @@ td {
 
 .edit-cell {
   width: 3%;
+  text-align: end;
 }
 
 .read-cell {

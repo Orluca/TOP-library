@@ -32,28 +32,28 @@ const $appContainer = document.querySelector(".app-container");
 
 // ADD NEW BOOK SECTION
 const $btnAddBook = document.querySelector(".add-book-button");
-const $containerAddBook = document.querySelector(".add-book-container");
+const $addBookContainer = document.querySelector(".add-book-container");
 
 // BOOK TABLE
-const $containerBookList = document.querySelector(".table-container");
+const $bookTableContainer = document.querySelector(".table-container");
 const $btnSortByTitle = document.querySelector("#sort-btn-title");
 const $btnSortByAuthor = document.querySelector("#sort-btn-author");
 const $btnSortByYear = document.querySelector("#sort-btn-year");
 const $btnSortByReadStatus = document.querySelector("#sort-btn-read-status");
 
 // EDIT MODAL
-const $modalBackground = document.querySelector(".edit-modal-background");
-const $modalConfirmBtn = document.querySelector(".modal-confirm-btn");
-const $modalCancelBtn = document.querySelector(".modal-cancel-btn");
-const $modalWindow = document.querySelector(".edit-modal-window");
-const $modalTitle = document.querySelector("#modal-input-title");
-const $modalAuthor = document.querySelector("#modal-input-author");
-const $modalYear = document.querySelector("#modal-input-year");
-const $modalReadStatus = document.querySelector("#modal-input-read-status");
+const $editBackground = document.querySelector(".edit-modal-background");
+const $editWindow = document.querySelector(".edit-modal-window");
+const $editBtnConfirm = document.querySelector(".modal-confirm-btn");
+const $editBtnCancel = document.querySelector(".modal-cancel-btn");
+const $editInputTitle = document.querySelector("#modal-input-title");
+const $editInputAuthor = document.querySelector("#modal-input-author");
+const $editInputYear = document.querySelector("#modal-input-year");
+const $editInputReadStatus = document.querySelector("#modal-input-read-status");
 
 // SETTINGS MODAL
-const $settingsModal = document.querySelector(".settings-modal");
-const $btnSettings = document.querySelector(".settings-button");
+const $settingsWindow = document.querySelector(".settings-modal");
+const $settingsBtn = document.querySelector(".settings-button");
 const $btnDarkMode = document.querySelector(".dark-mode-btn");
 const $btnDeleteAll = document.querySelector(".delete-all-btn");
 
@@ -84,7 +84,7 @@ function addBookToLibrary() {
   const isRead = document.querySelector("#read-status-input");
   const errorMsg = document.querySelector(".add-book-error");
 
-  // Check if all inputs are filled out
+  // Check if all inputs are filled in
   if (!title.value || !author.value || !year.value) {
     errorMsg.classList.remove("hidden");
     return;
@@ -155,19 +155,19 @@ function editEntry(id, element) {
   const yearElement = itemContainer.querySelector(".year-cell");
   const readStatusElement = itemContainer.querySelector(".read-status-value");
 
-  $modalBackground.classList.remove("hidden");
+  $editBackground.classList.remove("hidden");
   $appContainer.classList.add("blurry");
 
-  $modalWindow.dataset.id = id;
+  $editWindow.dataset.id = id;
 
-  $modalTitle.value = titleElement.textContent;
-  $modalAuthor.value = authorElement.textContent;
-  $modalYear.value = yearElement.textContent;
-  $modalReadStatus.checked = readStatusElement.checked;
+  $editInputTitle.value = titleElement.textContent;
+  $editInputAuthor.value = authorElement.textContent;
+  $editInputYear.value = yearElement.textContent;
+  $editInputReadStatus.checked = readStatusElement.checked;
 }
 
 function closeModal() {
-  $modalBackground.classList.add("hidden");
+  $editBackground.classList.add("hidden");
   $appContainer.classList.remove("blurry");
 }
 
@@ -176,7 +176,7 @@ function getNumberOfReadBooks() {
 }
 
 function closeSettingsModal() {
-  $settingsModal.classList.add("hidden");
+  $settingsWindow.classList.add("hidden");
 }
 
 function deleteAllBooks() {
@@ -186,7 +186,7 @@ function deleteAllBooks() {
   closeSettingsModal();
 }
 
-function handleTablePresses(e) {
+function listenForButtonPressesInTable(e) {
   if (!e.target.closest(".book-item-container")) return;
   const id = e.target.closest(".book-item-container").dataset.id;
 
@@ -199,7 +199,7 @@ function handleTablePresses(e) {
   // Listen for "Delete" button presses
   if (e.target.id === "delete-btn") deleteEntry(id);
 
-  // Listen for "Delete" button presses
+  // Listen for "Edit" button presses
   if (e.target.id === "edit-btn") editEntry(id, e.target);
 }
 
@@ -290,11 +290,11 @@ function sortByReadStatus() {
 }
 
 function updateBookData() {
-  const id = $modalWindow.dataset.id;
-  myLibrary[id].title = $modalTitle.value;
-  myLibrary[id].author = $modalAuthor.value;
-  myLibrary[id].year = $modalYear.value;
-  myLibrary[id].isRead = $modalReadStatus.checked;
+  const id = $editWindow.dataset.id;
+  myLibrary[id].title = $editInputTitle.value;
+  myLibrary[id].author = $editInputAuthor.value;
+  myLibrary[id].year = $editInputYear.value;
+  myLibrary[id].isRead = $editInputReadStatus.checked;
 
   saveToLocalStorage();
   displayBooks();
@@ -308,7 +308,7 @@ function openAndUpdateSettingsModal() {
   $readBooksAmount.textContent = getNumberOfReadBooks();
   $totalBooksAmount.textContent = myLibrary.length;
 
-  $settingsModal.classList.toggle("hidden");
+  $settingsWindow.classList.toggle("hidden");
 }
 
 function switchDarkLightMode() {
@@ -339,26 +339,26 @@ function init() {
 // ###############################################################
 
 $btnAddBook.addEventListener("click", addBookToLibrary);
-$containerAddBook.addEventListener("keypress", function (e) {
+$addBookContainer.addEventListener("keypress", function (e) {
   if (e.key !== "Enter") return;
   addBookToLibrary();
 });
-$containerBookList.addEventListener("click", handleTablePresses);
+$bookTableContainer.addEventListener("click", listenForButtonPressesInTable);
 $btnSortByTitle.addEventListener("click", sortByTitle);
 $btnSortByAuthor.addEventListener("click", sortByAuthor);
 $btnSortByYear.addEventListener("click", sortByYear);
 $btnSortByReadStatus.addEventListener("click", sortByReadStatus);
-$modalBackground.addEventListener("mousedown", function (e) {
+$editBackground.addEventListener("mousedown", function (e) {
   if (e.target !== this) return;
   closeModal();
 });
-$modalCancelBtn.addEventListener("click", closeModal);
-$modalConfirmBtn.addEventListener("click", updateBookData);
-$btnSettings.addEventListener("click", openAndUpdateSettingsModal);
+$editBtnCancel.addEventListener("click", closeModal);
+$editBtnConfirm.addEventListener("click", updateBookData);
+$settingsBtn.addEventListener("click", openAndUpdateSettingsModal);
 window.addEventListener("click", function (e) {
   if (e.target.closest(".settings-modal")) return;
   if (e.target.closest(".settings-button")) return;
-  $settingsModal.classList.add("hidden");
+  $settingsWindow.classList.add("hidden");
 });
 $btnDarkMode.addEventListener("click", switchDarkLightMode);
 $btnDeleteAll.addEventListener("click", function () {
